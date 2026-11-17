@@ -27,8 +27,7 @@
 }
 *{box-sizing:border-box}
 html{background:var(--black)}
-html.lenis, html.lenis body{height:auto}
-.lenis.lenis-smooth{scroll-behavior:auto !important}
+html{scroll-behavior:smooth}
 body{margin:0; color:var(--ink); background:var(--black); font:400 17px/1.6 var(--display); font-stretch:100%; -webkit-font-smoothing:antialiased; overflow-x:hidden}
 a{color:inherit}
 :focus-visible{outline:2px solid var(--signal); outline-offset:4px}
@@ -149,7 +148,9 @@ footer{position:relative; z-index:2; display:flex; justify-content:space-between
 .loader .bar i{display:block; height:100%; width:0; background:var(--signal); transition:width .3s ease}
 .loader small{margin-top:14px; font:600 11.5px/1 var(--mono); letter-spacing:.14em; text-transform:uppercase; color:var(--muted)}
 .fallback-note{display:none}
-.nogl .fallback-note{display:block; position:fixed; bottom:16px; right:16px; z-index:30; font:500 12px var(--mono); color:var(--muted)}
+.nogl #stage{display:none}
+.nogl body{background:var(--black) url(./still.jpg) no-repeat right center fixed; background-size:auto 100%}
+@media (max-width:900px){.nogl body{background-size:100% auto; background-position:center 12vh}}
 
 @media (max-width:900px){
   .index{display:none}
@@ -175,10 +176,11 @@ footer{position:relative; z-index:2; display:flex; justify-content:space-between
   .rv{opacity:1; transform:none; transition:none}
   .scrollcue i{animation:none}
   .proj-body,.loader{transition:none}
+  html{scroll-behavior:auto}
 }
 </style>
 <script type="importmap">
-{ "imports": { "three": "./vendor/three.module.min.js", "three/addons/": "./vendor/jsm/", "lenis": "./vendor/lenis.mjs" } }
+{ "imports": { "three": "./vendor/three.module.min.js", "three/addons/": "./vendor/jsm/" } }
 </script>
 </head>
 <body class="no-js">
@@ -295,7 +297,6 @@ footer{position:relative; z-index:2; display:flex; justify-content:space-between
   <span>© 2026 Asmitha A G · Chennai, India</span>
   <span>Open to SDE-1 roles</span>
 </footer>
-<div class="fallback-note">3D view unavailable in this browser.</div>
 
 <script type="module" src="./main.js"></script>
 </body>

@@ -5,7 +5,6 @@ import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
-import Lenis from 'lenis';
 
 document.body.classList.remove('no-js');
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -76,14 +75,7 @@ document.getElementById('prev').addEventListener('click', () => { projIdx = (pro
 document.getElementById('next').addEventListener('click', () => { projIdx = (projIdx + 1) % PROJECTS.length; renderProject(projIdx); });
 
 /* =================================================================== smooth scroll, reveal, counters */
-let lenis = null;
-if (!reduce) {
-  lenis = new Lenis({ lerp: 0.085, wheelMultiplier: 0.9 });
-  document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
-    const t = document.querySelector(a.getAttribute('href')); if (!t) return;
-    e.preventDefault(); lenis.scrollTo(t, { duration: 1.6 });
-  }));
-}
+// Native scrolling: never blocked by the 3D scene, works on every device.
 const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: 0.15 });
 document.querySelectorAll('.rv').forEach(el => io.observe(el));
 
@@ -121,8 +113,9 @@ function finishLoader() {
 const canvas = document.getElementById('stage');
 let renderer;
 try { renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: 'high-performance' }); }
-catch (e) { document.documentElement.classList.add('nogl'); finishLoader(); throw e; }
-renderer.setPixelRatio(Math.min(devicePixelRatio, mobile ? 1.6 : 2));
+catch (e) { renderer = null; }
+if (!renderer || !renderer.getContext()) { document.documentElement.classList.add('nogl'); finishLoader(); throw new Error('WebGL unavailable'); }
+renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5));
 renderer.setSize(innerWidth, innerHeight);
 renderer.outputColorSpace = THREE.SRGBColorSpace;
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
@@ -153,7 +146,7 @@ pool.rotation.x = -Math.PI / 2; pool.position.y = 0.001; scene.add(pool);
 
 const key = new THREE.SpotLight(0xffffff, 26, 8, 0.42, 0.85, 1.6);
 key.position.set(-1.1, 2.6, 1.4); key.castShadow = true;
-key.shadow.mapSize.set(mobile ? 1024 : 2048, mobile ? 1024 : 2048); key.shadow.bias = -0.0002; key.shadow.radius = 8; key.shadow.camera.near = 0.5; key.shadow.camera.far = 6;
+key.shadow.mapSize.set(1024, 1024); key.shadow.bias = -0.0002; key.shadow.radius = 8; key.shadow.camera.near = 0.5; key.shadow.camera.far = 6;
 scene.add(key, key.target);
 const rim = new THREE.SpotLight(0xff5a1f, 22, 7, 0.5, 0.9, 1.6);
 rim.position.set(1.6, 1.1, -1.8); scene.add(rim, rim.target);
@@ -207,7 +200,6 @@ const screenMat = new THREE.MeshBasicMaterial({ map: screenTex, toneMapped: fals
 const scrW = W - 0.022;
 const screen = new THREE.Mesh(new THREE.PlaneGeometry(scrW, scrW * SH / SW), screenMat);
 screen.rotation.x = Math.PI / 2; screen.position.set(0, -0.0003, (D - 0.002) / 2 + 0.003); lid.add(screen);
-const screenLight = new THREE.PointLight(0xbfd2ff, 0, 0.6, 2); screenLight.position.set(0, 0.09, 0.02); laptop.add(screenLight);
 [[-.13, -.09], [.13, -.09], [-.13, .09], [.13, .09]].forEach(([x, z]) => { const f = new THREE.Mesh(new THREE.CylinderGeometry(0.006, 0.006, 0.0012, 20), keyMat); f.position.set(x, -0.0006, z); laptop.add(f); });
 laptop.traverse(o => { if (o.isMesh) { o.castShadow = true; o.receiveShadow = true; } });
 screen.castShadow = false;
@@ -388,9 +380,11 @@ const SCREEN_FOR = { hero: 'boot', about: 'code', work: 'dashboard', projects: n
 const cur = [...(mobile ? POSES_M : POSES_D).hero];
 const tmp = new Array(6);
 const smooth = t => t * t * (3 - 2 * t);
+let centers = [];
+const measure = () => { centers = sections.map(s => s.offsetTop + s.offsetHeight / 2); };
+measure(); addEventListener('load', measure); new ResizeObserver(measure).observe(document.body);
 function scrollState() {
   const mid = scrollY + innerHeight * 0.5;
-  const centers = sections.map(s => s.offsetTop + s.offsetHeight / 2);
   let i = 0;
   while (i < centers.length - 1 && mid > centers[i + 1]) i++;
   const j = Math.min(i + 1, centers.length - 1);
@@ -408,9 +402,8 @@ composer.addPass(new OutputPass());
 const mouse = new THREE.Vector2();
 addEventListener('pointermove', e => mouse.set(e.clientX / innerWidth - 0.5, e.clientY / innerHeight - 0.5), { passive: true });
 const clock = new THREE.Clock();
-let firstFrame = true;
+let firstFrame = true, useBloom = true, frames = 0, ftime = 0;
 function frame(time) {
-  if (lenis) lenis.raf(time);
   const dt = Math.min(clock.getDelta(), 0.05), t = clock.elapsedTime;
   const P = mobile ? POSES_M : POSES_D;
   const { i, j, f } = scrollState();
@@ -429,7 +422,6 @@ function frame(time) {
   screenFade = Math.min(1, screenFade + dt * 3);
   const open = Math.min(1, cur[5] / 1.9);
   screenMat.color.setScalar(0.78 * screenFade * (0.3 + 0.7 * open));
-  screenLight.intensity = 0.06 * open * screenFade;
   indexLinks.forEach(l => l.classList.toggle('on', l.dataset.for === sections[nearIdx].id));
 
   camera.position.copy(mobile ? camM : camD); camera.lookAt(mobile ? lookM : lookD);
@@ -437,7 +429,16 @@ function frame(time) {
   rim.target.position.set(pivot.position.x, 0.2, pivot.position.z);
   pool.position.set(pivot.position.x, 0.001, pivot.position.z);
 
-  composer.render();
+  if (useBloom) composer.render(); else renderer.render(scene, camera);
+  // adaptive quality: if frames are slow, drop bloom, then resolution
+  frames++; ftime += dt;
+  if (frames === 45) {
+    const avg = ftime / frames;
+    if (avg > 0.026 && useBloom) { useBloom = false; }
+    else if (avg > 0.026 && renderer.getPixelRatio() > 1) { renderer.setPixelRatio(1); renderer.setSize(innerWidth, innerHeight); }
+    else if (avg > 0.034 && renderer.shadowMap.enabled) { renderer.shadowMap.enabled = false; key.castShadow = false; }
+    frames = 0; ftime = 0;
+  }
   if (firstFrame) { firstFrame = false; finishLoader(); }
   requestAnimationFrame(frame);
 }
