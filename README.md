@@ -4,9 +4,9 @@ Personal portfolio of Asmitha A G, full-stack engineer (React, Node.js, SQL) fro
 
 A single static page styled like a macOS desktop: frosted menu bar, a dock for navigation, and each section as a window or widget. It includes small working demos of my projects:
 
-- **PayLedger**: the 50-concurrent-transfers double-spend test, with and without row locks
-- **Smart Scheduling**: a live Critical Path Method calculation on a mini Gantt chart
-- **Kural RAG**: how hybrid search moved top-5 accuracy from 44 to 97
+- **PayLedger**: the 50-concurrent-transfers double-spend test with and without row locks, and a retry demo showing idempotency keys preventing a double charge
+- **Smart Scheduling**: an editable Gantt chart that recomputes the critical path, and rejects a circular dependency
+- **Kural RAG**: a tiny in-browser search over 7 Thirukkural verses in English, Tamil or Thanglish
 
 ## Run locally
 

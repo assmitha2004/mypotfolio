@@ -123,11 +123,49 @@ p{margin:0}
 .points p{font-size:14.5px; color:var(--muted); line-height:1.5}
 
 /* ---------- projects ---------- */
-.segmented{display:inline-flex; padding:3px; border-radius:11px; background:color-mix(in srgb, var(--text) 8%, transparent); gap:2px; margin-bottom:18px; flex-wrap:wrap}
-.segmented button{all:unset; cursor:pointer; padding:8px 18px; border-radius:8px; font:600 14.5px/1.2 var(--font); color:var(--text)}
-.segmented button[aria-selected="true"]{background:var(--win); box-shadow:0 1px 3px rgba(0,0,0,.14), 0 0 0 .5px rgba(0,0,0,.06)}
-.segmented button:focus-visible{outline:3px solid color-mix(in srgb, var(--accent) 55%, transparent)}
-.pwin[hidden]{display:none}
+.jump{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:22px}
+.jump a{display:inline-flex; align-items:center; gap:10px; padding:7px 14px 7px 7px; border-radius:999px; background:var(--win); box-shadow:0 0 0 1px var(--sep); color:var(--text); font-weight:600; font-size:14.5px}
+.jump a:hover{text-decoration:none; box-shadow:0 0 0 1px var(--accent)}
+.jump i{width:26px; height:26px; border-radius:7px; display:grid; place-items:center; color:#fff; font:700 12px var(--font); font-style:normal}
+.pwin{scroll-margin-top:60px}
+.pwin + .pwin{margin-top:28px}
+.what{margin-top:18px; padding:16px 18px; border-radius:14px; background:color-mix(in srgb, var(--accent) 7%, var(--win)); box-shadow:inset 0 0 0 1px color-mix(in srgb, var(--accent) 16%, transparent)}
+.what b{display:block; font-size:13px; color:var(--accent); font-weight:700; margin-bottom:4px}
+.what p{font-size:15.5px; line-height:1.55}
+.vh{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0)}
+.mini.ghost{background:var(--win); color:var(--text); box-shadow:inset 0 0 0 1px var(--sep)}
+.mini:disabled{opacity:.45; cursor:default}
+.row-btns{display:flex; gap:8px; flex-wrap:wrap; margin-top:14px}
+.wallet{display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:16px}
+.wallet div{background:var(--win); border-radius:12px; padding:12px 14px; box-shadow:0 0 0 .5px var(--sep)}
+.wallet small{display:block; font-size:12px; color:var(--muted); font-weight:500}
+.wallet strong{font:600 24px/1.3 var(--mono); font-variant-numeric:tabular-nums}
+.log{margin:14px 0 0; padding:0; list-style:none; display:grid; gap:6px; font:500 12.5px/1.45 var(--mono)}
+.log li{background:var(--win); border-radius:9px; padding:8px 10px; box-shadow:0 0 0 .5px var(--sep)}
+.log li.bad{color:var(--red)} .log li.ok{color:#1d8a3a}
+.g-ctrl{display:flex; gap:4px; align-items:center}
+.g-ctrl button{all:unset; cursor:pointer; width:20px; height:20px; border-radius:6px; display:grid; place-items:center; background:var(--win); box-shadow:0 0 0 1px var(--sep); font:600 13px/1 var(--font); color:var(--text)}
+.g-ctrl button:hover{box-shadow:0 0 0 1px var(--accent)}
+.g-ctrl button:focus-visible{outline:2px solid var(--accent)}
+.g-row2{display:grid; grid-template-columns:70px 1fr 52px; gap:8px; align-items:center; font-size:13px; color:var(--muted); font-weight:500}
+.search{display:flex; gap:8px; margin-top:16px}
+.search input{flex:1; min-width:0; height:38px; border-radius:10px; border:0; padding:0 12px; font:400 15px var(--font); background:var(--win); color:var(--text); box-shadow:0 0 0 1px var(--sep)}
+.search input:focus{outline:none; box-shadow:0 0 0 3px color-mix(in srgb, var(--accent) 35%, transparent)}
+.search .mini{height:38px; padding:0 14px; box-sizing:border-box; display:inline-flex; align-items:center}
+.chips{display:flex; gap:6px; flex-wrap:wrap; margin-top:10px}
+.chips button{all:unset; cursor:pointer; font-size:12.5px; font-weight:600; padding:5px 10px; border-radius:999px; background:var(--win); box-shadow:0 0 0 1px var(--sep)}
+.chips button:hover{box-shadow:0 0 0 1px var(--accent)}
+.chips button:focus-visible{outline:2px solid var(--accent)}
+.results{display:grid; gap:8px; margin-top:14px}
+.hit{background:var(--win); border-radius:12px; padding:12px 14px; box-shadow:0 0 0 .5px var(--sep)}
+.hit .top{display:flex; justify-content:space-between; gap:10px; font:600 12px var(--mono); color:var(--muted)}
+.hit .ta{font:500 15px/1.6 "Noto Sans Tamil", var(--font); margin-top:6px}
+.hit .en{font-size:14px; margin-top:4px}
+.hit .why{display:flex; gap:6px; flex-wrap:wrap; margin-top:8px}
+.hit .why span{font-size:11.5px; font-weight:600; padding:3px 8px; border-radius:999px; background:color-mix(in srgb, var(--accent) 10%, transparent); color:var(--accent)}
+.hit .why span.m{background:color-mix(in srgb, #5E5CE6 12%, transparent); color:#5E5CE6}
+.hit .bar{height:4px; border-radius:2px; background:color-mix(in srgb, var(--text) 8%, transparent); margin-top:10px; overflow:hidden}
+.hit .bar i{display:block; height:100%; background:var(--accent)}
 .pbody{display:grid; grid-template-columns:1.05fr .95fr; gap:0}
 .pinfo{padding:clamp(22px,3.5vw,40px)}
 .pinfo h3{font-size:clamp(30px,3.6vw,44px); font-weight:800; line-height:1.02}
@@ -300,7 +338,6 @@ footer{text-align:center; color:var(--muted); font-size:13px; padding:40px 0 10p
         <a class="btn blue" href="#projects">See my projects</a>
         <a class="btn plain" href="https://github.com/assmitha2004">GitHub</a>
         <a class="btn plain" href="https://linkedin.com/in/asmitha-a-g">LinkedIn</a>
-        <a class="btn plain" href="./3d/">View in 3D</a>
       </div>
     </div>
 
@@ -365,27 +402,28 @@ footer{text-align:center; color:var(--muted); font-size:13px; padding:40px 0 10p
   <section class="sec" id="projects">
     <div class="sec-h">
       <div class="k">Projects</div>
-      <h2>Three live apps. Try the idea behind each one.</h2>
-      <p>Every project is deployed, tested in CI and measured.</p>
+      <h2>Three live apps. Here's what each one does.</h2>
+      <p>Each window has a small working demo. Click around, they run right here in the page.</p>
+    </div>
+    <div class="jump">
+      <a href="#p-pay"><i style="background:#0071E3">₹</i>PayLedger</a>
+      <a href="#p-sch"><i style="background:#5E5CE6">▦</i>Smart Scheduling</a>
+      <a href="#p-rag"><i style="background:#FF375F">அ</i>Kural RAG</a>
     </div>
 
-    <div class="segmented" role="tablist" aria-label="Projects">
-      <button role="tab" id="t-pay" aria-controls="p-pay" aria-selected="true">PayLedger</button>
-      <button role="tab" id="t-sch" aria-controls="p-sch" aria-selected="false" tabindex="-1">Smart Scheduling</button>
-      <button role="tab" id="t-rag" aria-controls="p-rag" aria-selected="false" tabindex="-1">Kural RAG</button>
-    </div>
-
-    <div class="window pwin" role="tabpanel" id="p-pay" aria-labelledby="t-pay">
+    <!-- PayLedger -->
+    <article class="window pwin" id="p-pay">
       <div class="titlebar"><div class="lights" aria-hidden="true"><i></i><i></i><i></i></div><div class="t">PayLedger — digital wallet</div></div>
       <div class="pbody">
         <div class="pinfo">
           <h3>PayLedger</h3>
-          <p class="kind">A digital wallet where money can't appear from nowhere.</p>
+          <p class="kind">Digital wallet and payments platform</p>
+          <div class="what"><b>What it does</b><p>A digital wallet. You sign up, add money and send it to other people, with daily limits and a full history. Every rupee is recorded twice, once leaving and once arriving, so the books always balance, even when many payments hit the same wallet at the same moment.</p></div>
           <ul>
-            <li>JWT auth, top-ups, peer-to-peer transfers, daily limits and paginated history, on a double-entry ledger that stores money as integer paise.</li>
-            <li><code>SELECT FOR UPDATE</code> row locks stop double-spending. Locking wallets in a fixed id order took deadlocks from 50 to 0 in 100 opposing transfers.</li>
-            <li>Idempotency-Key header plus a unique index in the same transaction, so a retry never charges twice.</li>
-            <li>43 tests against real MySQL in GitHub Actions. Sustains about 300 transfers a second with the ledger balanced.</li>
+            <li><code>SELECT FOR UPDATE</code> row locks stop double-spending: 50 simultaneous ₹10 transfers from ₹100, exactly 10 accepted.</li>
+            <li>Wallets are locked in a fixed id order: 0 deadlocks in 100 opposing transfers, down from 50.</li>
+            <li>An Idempotency-Key header means a retried payment never charges twice.</li>
+            <li>43 tests against real MySQL in CI; about 300 transfers a second with the ledger balanced.</li>
           </ul>
           <div class="tags"><span>React</span><span>Node.js</span><span>Express</span><span>MySQL</span><span>Docker</span></div>
           <div class="buttons">
@@ -394,34 +432,60 @@ footer{text-align:center; color:var(--muted); font-size:13px; padding:40px 0 10p
           </div>
         </div>
         <div class="toy">
-          <h4>Try the double-spend test</h4>
-          <p class="sub">A wallet holds ₹100. Fifty ₹10 transfers arrive at the same instant. Each dot is one request.</p>
-          <div class="switch" role="group" aria-label="Transfer code">
-            <button id="b-nolock" type="button" aria-pressed="false">No locks</button>
-            <button id="b-lock" type="button" aria-pressed="true">With row locks</button>
+          <div class="switch tabs2" role="tablist" aria-label="PayLedger demos">
+            <button role="tab" id="pd-race" aria-selected="true" aria-pressed="true">Race test</button>
+            <button role="tab" id="pd-retry" aria-selected="false" aria-pressed="false">Retry safety</button>
           </div>
-          <div class="grid50" id="grid50" aria-hidden="true"></div>
-          <div class="stats" aria-live="polite">
-            <div><small>Accepted</small><strong id="r-acc">10/50</strong></div>
-            <div><small>From nothing</small><strong id="r-cr">₹0</strong></div>
-            <div><small>Ledger</small><strong id="r-le">OK</strong></div>
+          <div id="pv-race">
+            <h4 style="margin-top:18px">50 payments at the same instant</h4>
+            <p class="sub">A wallet holds ₹100. Fifty ₹10 transfers arrive together. Each dot is one request.</p>
+            <div class="switch" role="group" aria-label="Transfer code">
+              <button id="b-nolock" type="button" aria-pressed="false">No locks</button>
+              <button id="b-lock" type="button" aria-pressed="true">With row locks</button>
+            </div>
+            <div class="grid50" id="grid50" aria-hidden="true"></div>
+            <div class="stats" aria-live="polite">
+              <div><small>Accepted</small><strong id="r-acc">10/50</strong></div>
+              <div><small>From nothing</small><strong id="r-cr">₹0</strong></div>
+              <div><small>Ledger</small><strong id="r-le">OK</strong></div>
+            </div>
+            <p class="verdict" id="verdict" style="color:var(--green)">With locks, exactly 10 transfers go through and the wallet ends at ₹0.</p>
           </div>
-          <p class="verdict" id="verdict" style="color:var(--green)">With locks, exactly 10 transfers go through and the wallet ends at ₹0.</p>
+          <div id="pv-retry" hidden>
+            <h4 style="margin-top:18px">The network drops. You tap Pay again.</h4>
+            <p class="sub">Your phone never got the reply, so it retries the same payment. Does Ravi get paid twice?</p>
+            <div class="switch" role="group" aria-label="Idempotency">
+              <button id="k-off" type="button" aria-pressed="false">No idempotency key</button>
+              <button id="k-on" type="button" aria-pressed="true">With idempotency key</button>
+            </div>
+            <div class="wallet">
+              <div><small>Your balance</small><strong id="w-bal">₹100</strong></div>
+              <div><small>Ravi received</small><strong id="w-ravi">₹0</strong></div>
+            </div>
+            <div class="row-btns">
+              <button class="mini" type="button" id="w-pay">Pay Ravi ₹10</button>
+              <button class="mini ghost" type="button" id="w-retry" disabled>Retry same payment</button>
+              <button class="mini ghost" type="button" id="w-reset">Reset</button>
+            </div>
+            <ol class="log" id="w-log" aria-live="polite"></ol>
+          </div>
         </div>
       </div>
-    </div>
+    </article>
 
-    <div class="window pwin" role="tabpanel" id="p-sch" aria-labelledby="t-sch" hidden>
+    <!-- Smart Scheduling -->
+    <article class="window pwin" id="p-sch">
       <div class="titlebar"><div class="lights" aria-hidden="true"><i></i><i></i><i></i></div><div class="t">Smart Scheduling — planner</div></div>
       <div class="pbody">
         <div class="pinfo">
           <h3>Smart Scheduling</h3>
-          <p class="kind">A planner that works out the critical path for you.</p>
+          <p class="kind">Full-stack planning platform</p>
+          <div class="what"><b>What it does</b><p>A planning app for teams. You add tasks, say which ones depend on which, and arrange them on a drag-and-drop calendar or Gantt chart. It works out the earliest the project can finish, highlights the tasks that can't slip, sends reminders, and stops two people booking the same slot.</p></div>
           <ul>
-            <li>React and TypeScript app with a drag-and-drop calendar and Gantt timeline, on a versioned Express REST API with JWT auth and role-based access.</li>
-            <li>Scheduling engine with cycle detection, topological sort and the Critical Path Method: 1,000 dependent tasks in about 0.6 s, p95 latency under 27 ms.</li>
-            <li>No double-booking under concurrent edits: optimistic versioning returns 409 on stale writes, backed by a PostgreSQL exclusion constraint.</li>
-            <li>Redis runs BullMQ jobs (reminders, deadline-risk checks, retries with backoff) and pub/sub that pushes events live over Socket.IO. 135 tests in CI.</li>
+            <li>Scheduling engine with cycle detection, topological sort and the Critical Path Method: 1,000 dependent tasks in about 0.6 s.</li>
+            <li>p95 API latency under 27 ms on a versioned Express REST API with JWT and role-based access.</li>
+            <li>No double-booking: optimistic versioning (409 on stale writes) plus a PostgreSQL exclusion constraint.</li>
+            <li>Redis and BullMQ for reminders and deadline-risk checks, pushed live over Socket.IO. 135 tests in CI.</li>
           </ul>
           <div class="tags"><span>React</span><span>TypeScript</span><span>PostgreSQL</span><span>Prisma</span><span>Redis</span><span>BullMQ</span></div>
           <div class="buttons">
@@ -430,27 +494,34 @@ footer{text-align:center; color:var(--muted); font-size:13px; padding:40px 0 10p
           </div>
         </div>
         <div class="toy">
-          <h4>Shuffle the plan, watch the critical path move</h4>
-          <p class="sub">Six dependent tasks, scheduled with the Critical Path Method. Blue bars have zero slack.</p>
+          <h4>Change a task, watch the plan react</h4>
+          <p class="sub">Use − and + to change how many days a task takes. Blue tasks are on the critical path: if they slip, the whole project slips.</p>
           <div class="gantt" id="gantt"></div>
           <div class="g-foot">
             <span>Project length: <b id="g-len">–</b> days</span>
-            <button class="mini" id="g-shuffle" type="button">Shuffle durations</button>
+            <span class="row-btns" style="margin:0">
+              <button class="mini ghost" id="g-cycle" type="button">Add a circular dependency</button>
+              <button class="mini ghost" id="g-reset" type="button">Reset</button>
+            </span>
           </div>
+          <p class="verdict" id="g-msg" aria-live="polite"></p>
         </div>
       </div>
-    </div>
+    </article>
 
-    <div class="window pwin" role="tabpanel" id="p-rag" aria-labelledby="t-rag" hidden>
+    <!-- Kural RAG -->
+    <article class="window pwin" id="p-rag">
       <div class="titlebar"><div class="lights" aria-hidden="true"><i></i><i></i><i></i></div><div class="t">Kural RAG — semantic search</div></div>
       <div class="pbody">
         <div class="pinfo">
           <h3>Kural RAG</h3>
-          <p class="kind">Ask the Thirukkural anything, in English, Tamil or Thanglish.</p>
+          <p class="kind">Multilingual semantic search web app</p>
+          <div class="what"><b>What it does</b><p>A search engine for the Thirukkural. Ask a question in English, Tamil or Thanglish, in your own words, and it finds the most relevant of the 1,330 verses and writes a short answer that cites them, so you can check every claim against the original.</p></div>
           <ul>
-            <li>Co-built a web app that answers questions with relevant Thirukkural verses and a cited answer.</li>
-            <li>Hybrid search over all 1,330 kurals: a hand-written BM25, embeddings and a reranker. Across 233 test questions, 78% get the right verse in the top 5 and 56% rank it first.</li>
-            <li>A FastAPI service loads models once, caches results and keeps the API key server-side. Every citation is checked in code.</li>
+            <li>Hybrid search: a hand-written BM25 for exact words plus embeddings for meaning, then a reranker.</li>
+            <li>On a 100-question test set, the right verse in the top 5 rose from 44 to 97.</li>
+            <li>Two services: a FastAPI service loads the models once, caches results and keeps the API key server-side.</li>
+            <li>Every citation in an answer is checked in code before it's shown.</li>
           </ul>
           <div class="tags"><span>Next.js</span><span>TypeScript</span><span>Python</span><span>FastAPI</span></div>
           <div class="buttons">
@@ -459,19 +530,18 @@ footer{text-align:center; color:var(--muted); font-size:13px; padding:40px 0 10p
           </div>
         </div>
         <div class="toy">
-          <h4>What hybrid search changed</h4>
-          <p class="sub">On a 100-question golden set: how often the right verse made the top 5.</p>
-          <div class="bars">
-            <div><div class="lbl"><span>Before</span><b>44 / 100</b></div><div class="track"><div class="fill" id="f1" style="width:44%;background:color-mix(in srgb, var(--text) 30%, transparent)"></div></div></div>
-            <div><div class="lbl"><span>BM25 + embeddings + reranker</span><b>97 / 100</b></div><div class="track"><div class="fill" id="f2" style="width:97%;background:var(--accent)"></div></div></div>
-          </div>
-          <div class="kural" lang="ta">
-            <p>அகர முதல எழுத்தெல்லாம் ஆதி<br>பகவன் முதற்றே உலகு</p>
-            <small lang="en">Kural 1 of 1,330. As A is the first of all letters, so the world begins with God.</small>
-          </div>
+          <h4>Ask in English, Tamil or Thanglish</h4>
+          <p class="sub">A tiny version that runs in your browser over 7 verses. The real app searches all 1,330.</p>
+          <form class="search" id="k-form" role="search">
+            <label for="k-q" class="vh">Your question</label>
+            <input id="k-q" type="text" autocomplete="off" value="how should I study?">
+            <button class="mini" type="submit">Search</button>
+          </form>
+          <div class="chips" id="k-chips"></div>
+          <div class="results" id="k-res" aria-live="polite"></div>
         </div>
       </div>
-    </div>
+    </article>
   </section>
 
   <!-- skills -->
@@ -605,31 +675,16 @@ var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: re
   window.addEventListener('scroll',active,{passive:true}); active();
 })();
 
-/* project tabs */
+/* PayLedger: demo tabs */
 (function(){
-  var tabs=[].slice.call(document.querySelectorAll('.segmented [role=tab]'));
-  function sel(t,focus){
-    tabs.forEach(function(x){
-      var on=x===t; x.setAttribute('aria-selected',on); x.tabIndex=on?0:-1;
-      document.getElementById(x.getAttribute('aria-controls')).hidden=!on;
-    });
-    if(focus) t.focus();
-    if(t.id==='t-rag' && !reduce){
-      var f1=document.getElementById('f1'), f2=document.getElementById('f2');
-      f1.style.width='0'; f2.style.width='0';
-      requestAnimationFrame(function(){requestAnimationFrame(function(){f1.style.width='44%'; f2.style.width='97%';});});
-    }
-  }
-  tabs.forEach(function(t,i){
-    t.addEventListener('click',function(){sel(t);});
-    t.addEventListener('keydown',function(e){
-      if(e.key==='ArrowRight') sel(tabs[(i+1)%tabs.length],true);
-      if(e.key==='ArrowLeft') sel(tabs[(i+tabs.length-1)%tabs.length],true);
-    });
-  });
+  var tabs=[document.getElementById('pd-race'),document.getElementById('pd-retry')];
+  var views=[document.getElementById('pv-race'),document.getElementById('pv-retry')];
+  tabs.forEach(function(t,i){ t.addEventListener('click',function(){
+    tabs.forEach(function(x,j){ x.setAttribute('aria-selected',i===j); x.setAttribute('aria-pressed',i===j); views[j].hidden=i!==j; });
+  });});
 })();
 
-/* double-spend toy */
+/* PayLedger: double-spend race */
 (function(){
   var g=document.getElementById('grid50'), cells=[];
   for(var i=0;i<50;i++){var c=document.createElement('div');c.className='cell';g.appendChild(c);cells.push(c);}
@@ -666,40 +721,124 @@ var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: re
   cells.forEach(function(c,i){c.className=i<10?'cell ok':'cell no';});
 })();
 
-/* critical path toy */
+/* PayLedger: retry safety (idempotency) */
 (function(){
-  var tasks=[
-    {id:'Design',d:3,deps:[]},
-    {id:'API',d:4,deps:['Design']},
-    {id:'Database',d:2,deps:['Design']},
-    {id:'Frontend',d:5,deps:['API']},
-    {id:'Tests',d:3,deps:['API','Database']},
-    {id:'Launch',d:1,deps:['Frontend','Tests']}
-  ];
-  var box=document.getElementById('gantt'), len=document.getElementById('g-len'), rows={};
-  tasks.forEach(function(t){
-    var r=document.createElement('div'); r.className='g-row';
-    r.innerHTML='<span>'+t.id+'</span><div class="g-lane"><div class="g-bar"></div></div>';
-    box.appendChild(r); rows[t.id]=r.querySelector('.g-bar');
-  });
-  function cpm(){
-    var by={}; tasks.forEach(function(t){by[t.id]=t;});
-    tasks.forEach(function(t){ t.es=t.deps.reduce(function(m,d){return Math.max(m,by[d].ef);},0); t.ef=t.es+t.d; });
-    var end=Math.max.apply(null,tasks.map(function(t){return t.ef;}));
-    tasks.slice().reverse().forEach(function(t){
-      var succ=tasks.filter(function(s){return s.deps.indexOf(t.id)>=0;});
-      t.lf=succ.length?Math.min.apply(null,succ.map(function(s){return s.ls;})):end; t.ls=t.lf-t.d;
-    });
-    tasks.forEach(function(t){
-      var b=rows[t.id]; b.style.left=(t.es/end*100)+'%'; b.style.width='calc('+(t.d/end*100)+'% - 2px)';
-      b.textContent=t.d+'d'; b.className='g-bar'+(t.ls===t.es?' crit':'');
-    });
-    len.textContent=end;
+  var on=document.getElementById('k-on'), off=document.getElementById('k-off');
+  var bal=document.getElementById('w-bal'), ravi=document.getElementById('w-ravi'), log=document.getElementById('w-log');
+  var pay=document.getElementById('w-pay'), retry=document.getElementById('w-retry'), reset=document.getElementById('w-reset');
+  var useKey=true, b=100, r=0, seen={}, lastKey=null;
+  function draw(){ bal.textContent='₹'+b; ravi.textContent='₹'+r; ravi.style.color=r>10&&lastKey?'var(--red)':''; }
+  function add(t,cls){ var li=document.createElement('li'); li.textContent=t; if(cls) li.className=cls; log.appendChild(li); while(log.children.length>4) log.removeChild(log.firstChild); }
+  function charge(key){
+    if(useKey && seen[key]){ add('Key '+key+' seen before: returned the first result, no new charge','ok'); return; }
+    if(b<10){ add('Rejected: insufficient funds','bad'); return; }
+    b-=10; r+=10; if(useKey) seen[key]=1; draw();
   }
-  document.getElementById('g-shuffle').addEventListener('click',function(){
-    tasks.forEach(function(t){t.d=1+Math.floor(Math.random()*6);}); cpm();
+  pay.addEventListener('click',function(){
+    lastKey='k-'+Math.random().toString(16).slice(2,6);
+    charge(lastKey);
+    add((useKey?'Key '+lastKey+': ':'')+'charged ₹10. Reply lost on the way back to your phone.');
+    retry.disabled=false;
   });
+  retry.addEventListener('click',function(){
+    var before=r; charge(lastKey);
+    if(r>before) add('Charged ₹10 again. Ravi has now been paid twice.','bad');
+  });
+  reset.addEventListener('click',function(){ b=100; r=0; seen={}; lastKey=null; log.innerHTML=''; retry.disabled=true; draw(); });
+  function mode(k){ useKey=k; on.setAttribute('aria-pressed',k); off.setAttribute('aria-pressed',!k); reset.click(); }
+  on.addEventListener('click',function(){mode(true);}); off.addEventListener('click',function(){mode(false);});
+  draw();
+})();
+
+/* Smart Scheduling: critical path with editable durations */
+(function(){
+  var START=[['Design',3,[]],['API',4,['Design']],['Database',2,['Design']],['Frontend',5,['API']],['Tests',3,['API','Database']],['Launch',1,['Frontend','Tests']]];
+  var tasks, box=document.getElementById('gantt'), len=document.getElementById('g-len'), msg=document.getElementById('g-msg'), rows={};
+  function init(){ tasks=START.map(function(t){return {id:t[0],d:t[1],deps:t[2].slice()};}); }
+  init();
+  tasks.forEach(function(t){
+    var r=document.createElement('div'); r.className='g-row2';
+    r.innerHTML='<span>'+t.id+'</span><div class="g-lane"><div class="g-bar"></div></div><span class="g-ctrl"><button type="button" aria-label="Shorten '+t.id+'">−</button><button type="button" aria-label="Lengthen '+t.id+'">+</button></span>';
+    box.appendChild(r); rows[t.id]=r.querySelector('.g-bar');
+    var bs=r.querySelectorAll('button');
+    bs[0].addEventListener('click',function(){ var x=byId(t.id); x.d=Math.max(1,x.d-1); cpm(); });
+    bs[1].addEventListener('click',function(){ var x=byId(t.id); x.d=Math.min(9,x.d+1); cpm(); });
+  });
+  function byId(id){ return tasks.filter(function(x){return x.id===id;})[0]; }
+  function topo(){ // Kahn's algorithm; returns null on a cycle
+    var indeg={}, out={}, q=[], order=[];
+    tasks.forEach(function(t){indeg[t.id]=t.deps.length; out[t.id]=[];});
+    tasks.forEach(function(t){t.deps.forEach(function(d){out[d].push(t.id);});});
+    tasks.forEach(function(t){ if(!indeg[t.id]) q.push(t.id); });
+    while(q.length){ var n=q.shift(); order.push(n); out[n].forEach(function(m){ if(--indeg[m]===0) q.push(m); }); }
+    return order.length===tasks.length?order:null;
+  }
+  function cpm(){
+    var order=topo();
+    if(!order){ return false; }
+    order.forEach(function(id){ var t=byId(id); t.es=t.deps.reduce(function(m,d){return Math.max(m,byId(d).ef);},0); t.ef=t.es+t.d; });
+    var end=Math.max.apply(null,tasks.map(function(t){return t.ef;}));
+    order.slice().reverse().forEach(function(id){ var t=byId(id);
+      var succ=tasks.filter(function(s){return s.deps.indexOf(id)>=0;});
+      t.lf=succ.length?Math.min.apply(null,succ.map(function(s){return s.ls;})):end; t.ls=t.lf-t.d; });
+    tasks.forEach(function(t){ var b=rows[t.id]; b.style.left=(t.es/end*100)+'%'; b.style.width='calc('+(t.d/end*100)+'% - 2px)'; b.textContent=t.d+'d'; b.className='g-bar'+(t.ls===t.es?' crit':''); });
+    len.textContent=end;
+    var crit=tasks.filter(function(t){return t.ls===t.es;}).map(function(t){return t.id;});
+    msg.style.color='var(--muted)'; msg.textContent='Critical path: '+crit.join(' → ')+'.';
+    return true;
+  }
+  document.getElementById('g-cycle').addEventListener('click',function(){
+    var d=byId('Design'); if(d.deps.indexOf('Launch')<0) d.deps.push('Launch');
+    if(!topo()){ d.deps.splice(d.deps.indexOf('Launch'),1);
+      msg.style.color='var(--red)'; msg.textContent='Rejected: Design → API → Frontend → Launch → Design is a cycle, so no valid schedule exists. The change was not saved.'; }
+  });
+  document.getElementById('g-reset').addEventListener('click',function(){ init(); cpm(); });
   cpm();
+})();
+
+/* Kural RAG: tiny hybrid search over 7 verses */
+(function(){
+  var V=[
+    {n:1,ta:'அகர முதல எழுத்தெல்லாம் ஆதி\nபகவன் முதற்றே உலகு',en:'As the letter A is the first of all letters, so God, the Primal Being, is first in the world.',kw:['god','first','beginning','letter','alphabet','start','kadavul','iraivan','mudhal','கடவுள்','முதல்','அகர']},
+    {n:2,ta:'கற்றதனால் ஆய பயனென்கொல் வாலறிவன்\nநற்றாள் தொழாஅர் எனின்',en:'What use is all your learning if you do not bow at the feet of the One of pure knowledge?',kw:['learning','education','worship','knowledge','use','kalvi','padippu','கல்வி','கற்ற']},
+    {n:34,ta:'மனத்துக்கண் மாசிலன் ஆதல் அனைத்தறன்\nஆகுல நீர பிற',en:'To be spotless in mind is the whole of virtue; everything else is just noise and show.',kw:['mind','pure','virtue','good','honest','honesty','heart','sincere','integrity','manam','aram','மனம்','அறம்']},
+    {n:72,ta:'அன்பிலார் எல்லாம் தமக்குரியர் அன்புடையார்\nஎன்பும் உரியர் பிறர்க்கு',en:'Those without love keep everything for themselves; those with love would give even their bones to others.',kw:['love','kindness','kind','give','share','selfish','generous','anbu','அன்பு']},
+    {n:391,ta:'கற்க கசடறக் கற்பவை கற்றபின்\nநிற்க அதற்குத் தக',en:'Learn thoroughly what is worth learning, and then live by what you have learnt.',kw:['learn','study','studying','education','practice','thorough','student','exam','kalvi','karka','padippu','padikka','கற்க','கல்வி','படிப்பு']},
+    {n:423,ta:'எப்பொருள் யார்யார்வாய்க் கேட்பினும் அப்பொருள்\nமெய்ப்பொருள் காண்பது அறிவு',en:'Whatever you hear, from whoever says it, wisdom is finding the truth in it.',kw:['truth','wisdom','listen','fake','news','rumour','verify','check','facts','arivu','unmai','அறிவு','உண்மை']},
+    {n:948,ta:'நோய்நாடி நோய்முதல் நாடி அது தணிக்கும்\nவாய்நாடி வாய்ப்பச் செயல்',en:'Find the illness, find its cause, find what will cure it, then act with care.',kw:['disease','illness','sick','cause','cure','problem','debug','debugging','bug','doctor','fix','root','noi','நோய்']}
+  ];
+  var STOP={'a':1,'the':1,'i':1,'to':1,'of':1,'is':1,'what':1,'how':1,'should':1,'do':1,'in':1,'and':1,'my':1,'for':1,'about':1,'say':1,'says':1,'does':1,'be':1,'on':1,'with':1};
+  function toks(s){ return s.toLowerCase().replace(/[?!.,]/g,' ').split(/\s+/).filter(function(w){return w && !STOP[w];}); }
+  function stem(w){ return w.replace(/(ing|ed|es|s)$/,''); }
+  function search(q){
+    var qt=toks(q);
+    return V.map(function(v){
+      var exact=[], meaning=[];
+      var en=toks(v.en).map(stem);
+      qt.forEach(function(w){
+        if(v.ta.indexOf(w)>=0 || v.kw.indexOf(w)>=0 && /[^\x00-\x7F]/.test(w)) { if(exact.indexOf(w)<0) exact.push(w); return; }
+        if(v.kw.some(function(k){return k===w || stem(k)===stem(w);})) { if(meaning.indexOf(w)<0) meaning.push(w); }
+        else if(en.indexOf(stem(w))>=0 && exact.indexOf(w)<0) exact.push(w);
+      });
+      return {v:v, score:exact.length*1.2+meaning.length*1.0, exact:exact, meaning:meaning};
+    }).filter(function(r){return r.score>0;}).sort(function(a,b){return b.score-a.score;}).slice(0,3);
+  }
+  var form=document.getElementById('k-form'), input=document.getElementById('k-q'), out=document.getElementById('k-res'), chips=document.getElementById('k-chips');
+  ['how should I study?','debugging a problem','padippu','உண்மை','being honest','anbu'].forEach(function(c){
+    var b=document.createElement('button'); b.type='button'; b.textContent=c; b.addEventListener('click',function(){input.value=c; run();}); chips.appendChild(b);
+  });
+  function esc(s){ return s.replace(/[&<>]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c];}); }
+  function run(){
+    var res=search(input.value);
+    if(!res.length){ out.innerHTML='<div class="hit"><div class="en">No verse in this 7-verse sample matches “'+esc(input.value)+'”. Try one of the examples above, like “padippu” or “being honest”.</div></div>'; return; }
+    var max=res[0].score;
+    out.innerHTML=res.map(function(r,i){
+      var why=r.exact.map(function(w){return '<span>word: '+esc(w)+'</span>';}).concat(r.meaning.map(function(w){return '<span class="m">meaning: '+esc(w)+'</span>';})).join('');
+      return '<div class="hit"><div class="top"><span>#'+(i+1)+' · Kural '+r.v.n+'</span><span>cited</span></div><div class="ta" lang="ta">'+r.v.ta.replace('\n','<br>')+'</div><div class="en">'+r.v.en+'</div><div class="why">'+why+'</div><div class="bar"><i style="width:'+Math.round(r.score/max*100)+'%"></i></div></div>';
+    }).join('');
+  }
+  form.addEventListener('submit',function(e){e.preventDefault(); run();});
+  run();
 })();
 
 /* skills settings */
